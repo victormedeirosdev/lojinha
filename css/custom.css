@@ -9,3 +9,9 @@
 .padding20{
     padding: 20px;
 }
+
+.aparence-buttom{
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
