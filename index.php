@@ -12,7 +12,7 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
       <link type="text/css" rel="stylesheet" href="css/custom.css">
       <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
       <!--Let browser know website is optimized for mobile-->
@@ -96,8 +96,15 @@
     
     
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+      <script type="text/javascript" src="js/materialize.js"></script>
+      <script type="text/javascript" src="js/maskmoney.js"></script>
+    
+        <script type="text/javascript">
+            $(function(){
+                $("#valor_venda").maskMoney({symbol:'R$ ', showSymbol:true,thousands:'.', decimal:'.', symbolStay: true});
+            })
+        </script>    
     
         <script>
             $(document).ready(function(){
