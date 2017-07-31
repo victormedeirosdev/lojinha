@@ -4,18 +4,17 @@
     include_once("config/config.php");
     include_once("config/connection.php");
 
-    $valor_venda = $_POST['valor_venda'];
-    $produto_venda = $_POST['produto_venda'];
-    $quantidade_venda = $_POST['quantidade_venda'];
-    $mensagem_venda = $_POST['mensagem_venda'];
+    $nome_prod = $_POST['nome_prod'];
+    $categoria_prod = $_POST['categoria_prod'];
+    $obs_prod = $_POST['obs_prod'];
 
-    date_default_timezone_set('America/Sao_Paulo');
-    $data_venda = date ("Y/m/d");
-    $hora_venda = date ("H:i:s");
+    //date_default_timezone_set('America/Sao_Paulo');
+    //$data_venda = date ("Y/m/d");
+    //$hora_venda = date ("H:i:s");
 
     
     //Query de inserção no banco de dados.
-    $inserindo_venda = "INSERT INTO vendas (valor, produto, quantidade, mensagem, data_venda, hora_venda) VALUES ('$valor_venda','$produto_venda', '$quantidade_venda', '$mensagem_venda', '$data_venda', '$hora_venda')";
+    $inserindo_prod = "INSERT INTO produtos (nome, categoria, obs_prod) VALUES ('$nome_prod','$categoria_prod', '$obs_prod')";
 
 
 
@@ -40,27 +39,28 @@
     
     <?php 
         
-    if ($sql->query($inserindo_venda) === TRUE){ ?>
+    if ($sql->query($inserindo_prod) === TRUE){ ?>
     
     <div class="row">
         <div class="container">
-            <h5 class="green-text text-darken-1 center margin40 font-weight700 letter-spacing-1">VENDA CADASTRADA COM SUCESSO.</h5>
+            <h5 class="green-text text-darken-1 center margin40 font-weight700 letter-spacing-1">PRODUTO CADASTRADO COM SUCESSO.</h5>
         </div>    
     </div>
     <div class="row">
         <div class="col s12 m12 l12">
-            <p class="center"><a href="cadastro_venda.php" class="btn waves-effect waves-light white-text black z-depth-0 font-weight700 letter-spacing-1" name="action">NOVA VENDA</a></p>
+            <p class="center"><a href="cadastro_prod.php" class="btn waves-effect waves-light white-text black z-depth-0 font-weight700 letter-spacing-1" name="action">NOVO PRODUTO</a></p>
         </div>
     </div>
+    
     <?php } else { ?>
-        <div class="row">
+    <div class="row">
         <div class="container">
-            <h5 class="red-text text-darken-4 center margin40 font-weight700 letter-spacing-1">ERRO AO REALIZAR VENDA.</h5>
+            <h5 class="red-text text-darken-4 center margin40 font-weight700 letter-spacing-1">ERRO AO REALIZAR CADASTRO DO PRODUTO.</h5>
         </div>    
     </div>
     <div class="row">
         <div class="col s12 m12 l12">
-            <p class="center"><a href="cadastro_venda.php" class="btn waves-effect waves-light white-text black z-depth-0 font-weight700 letter-spacing-1" name="action">TENTAR NOVAMENTE</a></p>
+            <p class="center"><a href="cadastro_prod.php" class="btn waves-effect waves-light white-text black z-depth-0 font-weight700 letter-spacing-1" name="action">TENTAR NOVAMENTE</a></p>
         </div>
     </div>
     <?php } ?>
