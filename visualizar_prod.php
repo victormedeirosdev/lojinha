@@ -56,9 +56,31 @@
                         } 
                       ?>
                     <td>
-                        <a href=""><i class="material-icons green-text tooltipped" data-position="top" data-delay="50" data-tooltip="Ativar/Desativar">done</i></a>
-                        <a href=""><i class="material-icons grey-text tooltipped" data-position="top" data-delay="50" data-tooltip="Editar">edit</i></a>
-                        <a href=""><i class="material-icons red-text tooltipped" data-position="top" data-delay="50" data-tooltip="Deletar">delete_forever</i></a>
+                        <a href="#modal1<?php echo $rows_prod['id']; ?>" class="modal-trigger"><i class="material-icons green-text">assignment</i></a>
+                        <!-- Modal VISUALIZAÇÃO -->
+
+                          <div id="modal1<?php echo $rows_prod['id']; ?>" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                              <h5>Detalhes do produto</h5>
+                              <p><strong>Código: </strong><?php echo $rows_prod['id']; ?></p>
+                              <p><strong>Nome: </strong><?php echo $rows_prod['nome']; ?></p>
+                              <p><strong>Categoria: </strong><?php echo $rows_prod['categoria_nome']; ?></p>
+                                <?php 
+                                    if (empty($rows_prod['obs_prod'])){
+                                        echo "<p><strong>Observações: </strong>Nenhuma observação cadastrada.</p>";
+                                    } else {
+                                        echo "<p><strong>Observações: </strong>".$rows_prod['obs_prod']."</p>";
+                                    } 
+                                ?>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Fechar</a>
+                            </div>
+                          </div>
+                        
+                        <!-- Fim Modal VISUALIZAÇÃO -->
+                        <a href=""><i class="material-icons grey-text">edit</i></a>
+                        <a href=""><i class="material-icons red-text">delete_forever</i></a>
                     </td>
                   </tr>
               <?php } ?>
@@ -77,6 +99,9 @@
           </div>
         </div>
     </div>
+    
+    <!-- ESTRUTURA DE MODAIS -->
+    
     
     <a id="btn_add" href="cadastro_venda.php" class="btn-floating btn-large waves-effect waves-light btn pink z-depth-1 font-weight700"><i class="material-icons">add</i></a>
 
