@@ -89,9 +89,13 @@
                           <div id="modal2<?php echo $rows_prod['id']; ?>" class="modal modal-fixed-footer">
                             <div class="modal-content">
                               <h5>Edição do produto</h5>
-                              <p><strong>Código: </strong><?php echo $rows_prod['id']; ?></p>
+                              <p>Código: <strong><?php echo $rows_prod['id']; ?></strong></p>
                               <form action="edicao_prod_db.php" method="post">
-                                <input type="hidden" name="id_prod" value="<?php echo $rows_prod['id']; ?>">
+                                <div class="row">
+                                    <div class="input-field col s12 m12 l12">
+                                        <input placeholder="" id="id_prod" name="id_prod" type="hidden" value="<?php echo $rows_prod['id']; ?>" class="validate" autocomplete="off">
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12">
                                         <input placeholder="" id="nome_prod" name="nome_prod" type="text" value="<?php echo $rows_prod['nome']; ?>" class="validate" autocomplete="off" required>
@@ -115,7 +119,7 @@
                                 <div class="row">
                                     <div class="col s12 m12 l12">
                                       <label for="textarea">Observações sobre o produto (opicional)</label>
-                                      <textarea id="textarea" class="materialize-textarea" name="obs_prod" autocomplete="off" required><?php echo $rows_prod['obs_prod']; ?></textarea>
+                                      <textarea id="textarea" class="materialize-textarea" name="obs_prod" autocomplete="off"><?php echo $rows_prod['obs_prod']; ?></textarea>
                                     </div>
                                 </div>
                             </div>                              
