@@ -27,6 +27,8 @@
         $visualizar_prod = "SELECT `produtos`.*,`categoria_prod`.`nome` AS categoria_nome FROM `produtos` INNER JOIN `categoria_prod` ON `produtos`.`categoria` = `categoria_prod`.`id` ORDER BY `produtos`.`id` ASC";
         $resultados_prod = mysqli_query($sql, $visualizar_prod);
     
+        
+    
     ?>
     
     <div class="row">
@@ -79,7 +81,56 @@
                           </div>
                         
                         <!-- Fim Modal VISUALIZAÇÃO -->
-                        <a href=""><i class="material-icons grey-text">edit</i></a>
+                        
+                        
+                        <a href="#modal2<?php echo $rows_prod['id']; ?>" class="modal-trigger"><i class="material-icons grey-text">edit</i></a>
+
+                          <!-- Modal EDIÇÃO -->
+                          <div id="modal2<?php echo $rows_prod['id']; ?>" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                              <h5>Edição do produto</h5>
+                              <p><strong>Código: </strong><?php echo $rows_prod['id']; ?></p>
+                              <form action="edicao_prod_db.php" method="post">
+                                <input type="hidden" name="id_prod" value="<?php echo $rows_prod['id']; ?>">
+                                <div class="row">
+                                    <div class="input-field col s12 m12 l12">
+                                        <input placeholder="" id="nome_prod" name="nome_prod" type="text" value="<?php echo $rows_prod['nome']; ?>" class="validate" autocomplete="off" required>
+                                        <label class="active" for="first_name">Nome do novo produto</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                      <label>Selecione a categoria</label>
+                                      <select class="browser-default" name="categoria_prod" autocomplete="off" required>
+                                        <option value="" disabled selected>selecione a categoria</option>
+                                        <?php 
+                                            $visualizar_categ = "SELECT * FROM `categoria_prod` ORDER BY `categoria_prod`.`id` ASC";
+                                            $resultados_categ = mysqli_query($sql, $visualizar_categ);                                  
+                                            while ($rows_categ = mysqli_fetch_assoc($resultados_categ)){ ?>
+                                            <option value="<?php echo $rows_categ['id']; ?>"><?php echo $rows_categ['nome']; ?></option>
+                                        <?php } ?>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                      <label for="textarea">Observações sobre o produto (opicional)</label>
+                                      <textarea id="textarea" class="materialize-textarea" name="obs_prod" autocomplete="off" required><?php echo $rows_prod['obs_prod']; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>                              
+                            
+                            <div class="modal-footer">
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn red z-depth-0">CANCELAR</a>
+                              <button type="submit" class="modal-action waves-effect waves-green btn green z-depth-0">SALVAR</button>
+                              </form>
+                            </div>
+                          </div>
+                        
+                        <!-- Fim Modal EDIÇÃO -->
+                        
+                        
+                        
                         <a href=""><i class="material-icons red-text">delete_forever</i></a>
                     </td>
                   </tr>
