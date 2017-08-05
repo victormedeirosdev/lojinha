@@ -90,12 +90,8 @@
                             <div class="modal-content">
                               <h5>Edição do produto</h5>
                               <p>Código: <strong><?php echo $rows_prod['id']; ?></strong></p>
-                              <form action="edicao_prod_db.php" method="post">
-                                <div class="row">
-                                    <div class="input-field col s12 m12 l12">
-                                        <input placeholder="" id="id_prod" name="id_prod" type="hidden" value="<?php echo $rows_prod['id']; ?>" class="validate" autocomplete="off">
-                                    </div>
-                                </div>
+                              <form action="edicao_prod_db.php" method="post"> <!-- Início FORM de alteração -->
+                                <input placeholder="" id="id_prod" name="id_prod" type="hidden" value="<?php echo $rows_prod['id']; ?>" class="validate" autocomplete="off">   
                                 <div class="row">
                                     <div class="input-field col s12 m12 l12">
                                         <input placeholder="" id="nome_prod" name="nome_prod" type="text" value="<?php echo $rows_prod['nome']; ?>" class="validate" autocomplete="off" required>
@@ -125,17 +121,38 @@
                             </div>                              
                             
                             <div class="modal-footer">
-                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn red z-depth-0">CANCELAR</a>
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat z-depth-0">CANCELAR</a>
                               <button type="submit" class="modal-action waves-effect waves-green btn green z-depth-0">SALVAR</button>
-                              </form>
+                              </form> <!-- Fim FORM de alteração -->
                             </div>
                           </div>
                         
                         <!-- Fim Modal EDIÇÃO -->
                         
                         
+                        <a href="#modal3<?php echo $rows_prod['id']; ?>" class="modal-trigger"><i class="material-icons red-text">delete_forever</i></a>
                         
-                        <a href=""><i class="material-icons red-text">delete_forever</i></a>
+                        <!-- Modal EDIÇÃO -->
+                        
+                          <div id="modal3<?php echo $rows_prod['id']; ?>" class="modal">
+                            <div class="modal-content">
+                              <h4>Excluir produto</h4>
+                              <p>Você deseja realmente excluir este produto da base de dados?</p>
+                              <p>Código: <strong><?php echo $rows_prod['id']; ?></strong></p>
+                              <p>Nome: <strong><?php echo $rows_prod['nome']; ?></strong></p>
+                              <form action="exclui_prod_db.php" method="post"> <!-- Início FORM de exclusão -->
+                                  <input placeholder="" id="id_prod" name="id_prod" type="hidden" value="<?php echo $rows_prod['id']; ?>" class="validate" autocomplete="off">
+                            </div>
+                            <div class="modal-footer">
+                              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat z-depth-0">CANCELAR</a>
+                              <button type="submit" class="modal-action waves-effect waves-green btn red z-depth-0">SALVAR</button>
+                              </form> <!-- Fim FORM de exclusão -->
+                            </div>
+                          </div>
+                        
+                        
+                        
+                        
                     </td>
                   </tr>
               <?php } ?>
